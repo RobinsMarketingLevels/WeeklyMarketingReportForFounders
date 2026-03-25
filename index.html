@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ============================================================
+     EDIT: Page title (shows in browser tab)
+     ============================================================ -->
+<title>The Weekly Marketing Report Template | For Founders</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a18;
+    --ink-mid: #4a4a46;
+    --ink-light: #8a8a84;
+    --cream: #f7f4ef;
+    --cream-dark: #ede9e1;
+    --accent: #c8522a;
+    --accent-light: #f0ebe4;
+    --rule: #d4cfc6;
+  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; overflow-x: hidden; }
+
+  .masthead { border-bottom: 1px solid var(--rule); padding: 1.5rem 2rem; display: flex; align-items: center; justify-content: space-between; background: var(--cream); }
+  .masthead-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
+  .masthead-price { font-family: 'Playfair Display', serif; font-size: 15px; color: var(--accent); }
+
+  .hero { padding: 5rem 2rem 4rem; max-width: 860px; margin: 0 auto; border-bottom: 1px solid var(--rule); }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 1.5rem; }
+  .hero-eyebrow::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); }
+
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.1; font-weight: 600; max-width: 700px; margin-bottom: 1.5rem; color: var(--ink); }
+  h1 em { font-style: italic; color: var(--accent); }
+
+  .hero-sub { font-size: 1.1rem; color: var(--ink-mid); max-width: 560px; line-height: 1.7; margin-bottom: 2.5rem; font-weight: 300; }
+  .cta-group { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+
+  .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--cream); text-decoration: none; padding: 0.85rem 1.75rem; font-size: 14px; font-weight: 500; letter-spacing: 0.02em; transition: background 0.2s; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-ghost { font-size: 13px; color: var(--ink-mid); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; background: none; border: none; font-family: 'DM Sans', sans-serif; }
+
+  .section { padding: 4rem 2rem; max-width: 860px; margin: 0 auto; }
+  .section-rule { border-bottom: 1px solid var(--rule); }
+  .section-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; margin-bottom: 2rem; }
+
+  h2.section-heading { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.2rem); line-height: 1.2; margin-bottom: 0.75rem; color: var(--ink); }
+  .section-intro { font-size: 15px; color: var(--ink-mid); max-width: 560px; margin-bottom: 2rem; font-weight: 300; line-height: 1.7; }
+
+  .confidence-strip { background: var(--cream-dark); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 2.5rem 2rem; }
+  .confidence-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+  .confidence-stat { text-align: center; }
+  .confidence-stat .stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .confidence-stat .stat-label { font-size: 13px; color: var(--ink-mid); line-height: 1.4; }
+
+  .brand-section { background: var(--ink); padding: 4rem 2rem; }
+  .brand-inner { max-width: 860px; margin: 0 auto; }
+  .brand-section .section-label { color: var(--accent); margin-bottom: 1.5rem; }
+  .brand-quote { font-family: 'Playfair Display', serif; font-size: clamp(1.3rem, 3vw, 1.8rem); color: var(--cream); line-height: 1.4; max-width: 640px; margin-bottom: 2rem; font-style: italic; }
+  .brand-quote strong { font-style: normal; color: #c8a882; font-weight: 600; }
+  .brand-body { font-size: 14px; color: #9a9690; line-height: 1.7; max-width: 600px; margin-bottom: 2rem; font-weight: 300; }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .brand-tag { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #3a3a36; color: #7a7a74; padding: 5px 12px; font-weight: 500; }
+
+  .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; }
+  .problem-item { padding: 1.5rem 1.5rem 1.5rem 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  .problem-item:nth-child(2n) { border-right: none; }
+  .problem-item:nth-last-child(-n+2) { border-bottom: none; }
+  .problem-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cream-dark); line-height: 1; margin-bottom: 0.5rem; }
+  .problem-text { font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+  .what-you-get { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+  @media (max-width: 600px) {
+    .what-you-get { grid-template-columns: 1fr; }
+    .problem-item:nth-child(2n) { border-right: 1px solid var(--rule); }
+    .problem-item { border-right: none; }
+    .customise-grid { grid-template-columns: 1fr; }
+  }
+
+  .channel-card { border: 1px solid var(--rule); padding: 1.5rem; background: white; }
+  .channel-card-tag { display: inline-block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; background: var(--accent-light); color: var(--accent); padding: 3px 8px; margin-bottom: 1rem; font-weight: 500; }
+  .channel-card h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+  .channel-card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+
+  .template-preview { background: white; border: 1px solid var(--rule); padding: 1.5rem; margin-top: 2rem; position: relative; overflow: hidden; }
+  .template-preview::after { content: 'Template preview'; position: absolute; bottom: 1rem; right: 1rem; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); }
+  .preview-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 8px; }
+  .preview-cell { background: var(--cream); height: 28px; border-radius: 2px; display: flex; align-items: center; padding: 0 8px; }
+  .preview-cell.header { background: var(--ink); }
+  .preview-cell.accent-cell { background: var(--accent-light); }
+  .preview-bar { height: 6px; background: var(--cream-dark); border-radius: 2px; width: 60%; }
+  .preview-bar.full { width: 90%; background: var(--accent); opacity: 0.3; }
+  .preview-bar.mid { width: 55%; background: var(--ink); opacity: 0.15; }
+  .preview-bar.short { width: 30%; }
+  .blur-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 60%; background: linear-gradient(transparent, white 80%); pointer-events: none; }
+
+  .customise-section { background: var(--cream-dark); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 4rem 2rem; }
+  .customise-inner { max-width: 860px; margin: 0 auto; }
+  .customise-inner .section-label { margin-bottom: 1.5rem; }
+  .customise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .customise-card { background: white; border: 1px solid var(--rule); padding: 1.5rem; }
+  .customise-card-icon { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px; }
+  .customise-card-icon::before { content: ''; display: block; width: 16px; height: 1px; background: var(--accent); }
+  .customise-card h3 { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--ink); }
+  .customise-card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .plugin-list { margin-top: 0.75rem; display: flex; flex-wrap: wrap; gap: 6px; }
+  .plugin-tag { font-size: 11px; background: var(--accent-light); color: var(--accent); padding: 3px 9px; font-weight: 500; letter-spacing: 0.05em; }
+
+  .for-who { background: var(--ink); color: var(--cream); padding: 4rem 2rem; }
+  .for-who-inner { max-width: 860px; margin: 0 auto; }
+  .for-who .section-label { color: var(--accent); }
+  .for-who h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 4vw, 2.4rem); line-height: 1.2; max-width: 600px; margin-bottom: 2rem; color: var(--cream); }
+  .for-who h2 em { font-style: italic; color: #c8a882; }
+  .checklist { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+  .checklist li { display: flex; gap: 10px; font-size: 14px; color: #c8c4bc; line-height: 1.5; }
+  .checklist li::before { content: '→'; color: var(--accent); flex-shrink: 0; font-size: 13px; margin-top: 1px; }
+
+  .pricing-block { display: flex; align-items: flex-start; gap: 3rem; flex-wrap: wrap; }
+  .price-display { flex-shrink: 0; }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 4rem; line-height: 1; color: var(--ink); }
+  .price-currency { font-size: 1.5rem; vertical-align: top; margin-top: 0.5rem; display: inline-block; }
+  .price-note { font-size: 12px; color: var(--ink-light); margin-top: 0.25rem; }
+  .price-includes { flex: 1; min-width: 240px; }
+  .price-includes h3 { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; font-weight: 500; }
+  .includes-list { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .includes-list li { display: flex; gap: 8px; font-size: 14px; color: var(--ink-mid); }
+  .includes-list li::before { content: '✓'; color: var(--accent); font-weight: 500; flex-shrink: 0; }
+
+  .footer-cta { background: var(--accent); padding: 4rem 2rem; text-align: center; }
+  .footer-cta h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.8rem); color: white; margin-bottom: 1rem; line-height: 1.2; }
+  .footer-cta p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 2rem; font-weight: 300; }
+  .btn-light { display: inline-flex; align-items: center; gap: 8px; background: white; color: var(--accent); text-decoration: none; padding: 0.85rem 1.75rem; font-size: 14px; font-weight: 500; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; transition: opacity 0.2s; }
+  .btn-light:hover { opacity: 0.9; }
+
+  .site-footer { padding: 1.5rem 2rem; border-top: 1px solid var(--rule); display: flex; justify-content: space-between; align-items: center; background: var(--cream); flex-wrap: wrap; gap: 1rem; }
+  .site-footer p { font-size: 12px; color: var(--ink-light); }
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     EDIT: Top bar — left label and right price
+     ============================================================ -->
+<header class="masthead">
+  <span class="masthead-label">Digital Download · Instant Access · Google Sheets + Excel</span>
+  <span class="masthead-price">A$79 one-time</span>
+</header>
+
+
+<!-- ============================================================
+     EDIT: Hero section — eyebrow, headline, subheading
+     The word(s) wrapped in <em> tags appear in the accent colour
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-eyebrow">For founders without a marketing team</div>
+  <h1>One source of truth.<br><em>Every channel</em> pulling its weight.</h1>
+  <p class="hero-sub">A weekly marketing report template that brings your eComm store, Paid Ads, Organic Social and eDM activity into a single view — so you can make confident, focused decisions every week without second-guessing yourself.</p>
+  <div class="cta-group">
+    <!-- EDIT: Replace YOUR-GUMROAD-URL with your actual Gumroad product link -->
+    <a href="YOUR-GUMROAD-URL" class="btn-primary">Get the template →</a>
+    <button class="btn-ghost" onclick="document.getElementById('inside').scrollIntoView({behavior:'smooth'})">See what's inside</button>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EDIT: Stats strip — three numbers and their labels
+     ============================================================ -->
+<div class="confidence-strip">
+  <div class="confidence-inner">
+    <div class="confidence-stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">channels tracked in one weekly view</div>
+    </div>
+    <div class="confidence-stat">
+      <div class="stat-num">1×</div>
+      <div class="stat-label">one-time cost, use it every week</div>
+    </div>
+    <div class="confidence-stat">
+      <div class="stat-num">A$79</div>
+      <div class="stat-label">vs. hundreds per hour for a consultant</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EDIT: Dark credibility panel — quote, body paragraph, tags
+     ============================================================ -->
+<div class="brand-section">
+  <div class="brand-inner">
+    <p class="section-label">The thinking behind it</p>
+    <p class="brand-quote">"The best marketing teams in the world don't track everything. They track the <strong>right things</strong> — and they look at them together."</p>
+    <p class="brand-body">This template is built on the same reporting framework used by growth teams at global eCommerce brands managing $5–10M+ businesses. The metrics inside aren't chosen arbitrarily — they're the ones senior marketers actually use to cut through noise, understand channel contribution, and decide where to put their energy next. Distilled into a format any founder can pick up and use from week one.</p>
+    <!-- EDIT: Add or remove tags by copying/deleting a <span class="brand-tag"> line -->
+    <div class="brand-tags">
+      <span class="brand-tag">eComm</span>
+      <span class="brand-tag">Paid Media</span>
+      <span class="brand-tag">Organic Social</span>
+      <span class="brand-tag">Email Marketing</span>
+      <span class="brand-tag">BROAS</span>
+      <span class="brand-tag">Channel Attribution</span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EDIT: Problem section — heading and four pain point items
+     ============================================================ -->
+<section class="section section-rule">
+  <p class="section-label">The problem it solves</p>
+  <h2 class="section-heading">You have the instincts.<br>Now get the clarity to back them.</h2>
+  <p class="section-intro">When your marketing data lives across five different platforms, it's hard to see the full picture — and even harder to know where to focus your energy this week.</p>
+  <div class="problem-grid">
+    <div class="problem-item">
+      <div class="problem-num">01</div>
+      <p class="problem-text">You're running multiple channels but have no single view of how they're working together</p>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">02</div>
+      <p class="problem-text">You know something is working — you just can't pinpoint which channel deserves the credit</p>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">03</div>
+      <p class="problem-text">Weekly planning takes longer than it should because the data isn't in one place</p>
+    </div>
+    <div class="problem-item">
+      <div class="problem-num">04</div>
+      <p class="problem-text">You want to make confident budget and effort decisions — but without a clear scorecard it's harder than it needs to be</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EDIT: What's inside — four channel cards
+     Each card has a tag, heading, and description
+     ============================================================ -->
+<section class="section section-rule" id="inside">
+  <p class="section-label">What's inside</p>
+  <h2 class="section-heading">One template.<br>Full-channel clarity.</h2>
+  <p class="section-intro">Tracks the metrics that actually matter across every channel — the same ones growth teams at major brands use — with built-in prompts that tell you what to look for and what to do next.</p>
+  <div class="what-you-get">
+    <div class="channel-card">
+      <span class="channel-card-tag">eComm Store</span>
+      <h3>Revenue & Store Performance</h3>
+      <p>Sessions, conversion rate, AOV, total revenue — the numbers that tell you if your store is pulling its weight week on week</p>
+    </div>
+    <div class="channel-card">
+      <span class="channel-card-tag">Paid Ads</span>
+      <h3>Ad Spend & ROAS</h3>
+      <p>Spend, ROAS, CPC, BROAS — cut through the platform noise and see exactly what your budget is returning</p>
+    </div>
+    <div class="channel-card">
+      <span class="channel-card-tag">Organic Social</span>
+      <h3>Reach, Engagement & Growth</h3>
+      <p>Reach, engagement rate, link clicks, net follower growth and top performing content — what's actually building your audience and driving action</p>
+    </div>
+    <div class="channel-card">
+      <span class="channel-card-tag">eDM / Email</span>
+      <h3>Email Revenue Attribution</h3>
+      <p>Open rate, click rate, revenue per send — know exactly what your list is worth and when to lean in</p>
+    </div>
+  </div>
+
+  <!-- Template preview graphic — no editing needed here -->
+  <div class="template-preview">
+    <div class="preview-row">
+      <div class="preview-cell header"></div>
+      <div class="preview-cell header"></div>
+      <div class="preview-cell header"></div>
+      <div class="preview-cell header"></div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-cell"><div class="preview-bar full"></div></div>
+      <div class="preview-cell"><div class="preview-bar mid"></div></div>
+      <div class="preview-cell accent-cell"><div class="preview-bar full"></div></div>
+      <div class="preview-cell"><div class="preview-bar short"></div></div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-cell"><div class="preview-bar mid"></div></div>
+      <div class="preview-cell accent-cell"><div class="preview-bar full"></div></div>
+      <div class="preview-cell"><div class="preview-bar short"></div></div>
+      <div class="preview-cell"><div class="preview-bar mid"></div></div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-cell accent-cell"><div class="preview-bar short"></div></div>
+      <div class="preview-cell"><div class="preview-bar mid"></div></div>
+      <div class="preview-cell"><div class="preview-bar full"></div></div>
+      <div class="preview-cell accent-cell"><div class="preview-bar mid"></div></div>
+    </div>
+    <div class="preview-row">
+      <div class="preview-cell"><div class="preview-bar full"></div></div>
+      <div class="preview-cell"><div class="preview-bar short"></div></div>
+      <div class="preview-cell"><div class="preview-bar mid"></div></div>
+      <div class="preview-cell"><div class="preview-bar full"></div></div>
+    </div>
+    <div class="blur-overlay"></div>
+  </div>
+  <p style="font-size: 13px; color: var(--ink-light); margin-top: 1rem; font-style: italic;">Every channel includes built-in analysis prompts — so you always know what trends to spot, what's working, and exactly where to focus the week ahead.</p>
+</section>
+
+
+<!-- ============================================================
+     EDIT: Customise section — two cards, heading, intro paragraph
+     ============================================================ -->
+<div class="customise-section">
+  <div class="customise-inner">
+    <p class="section-label">Make it yours</p>
+    <h2 class="section-heading">Fully customisable.<br>Works the way you work.</h2>
+    <p class="section-intro">The template is yours to adapt — rename channels, add your own metrics, adjust it to fit your business. And if you want to save time on data entry, it's built to plug straight into automation tools.</p>
+    <div class="customise-grid">
+      <div class="customise-card">
+        <div class="customise-card-icon">Customisable</div>
+        <h3>Built to fit your business</h3>
+        <p>Available in both Google Sheets and Excel. Edit any field, rename any section, add rows for your own KPIs. Nothing is locked — it's a working template, not a rigid tool.</p>
+      </div>
+      <div class="customise-card">
+        <div class="customise-card-icon">Auto-populate</div>
+        <h3>Connect it to your data</h3>
+        <p>Skip the manual data entry entirely. The template is compatible with automation tools that pull your platform data in automatically each week.</p>
+        <!-- EDIT: Add or remove plugin tags here -->
+        <div class="plugin-list">
+          <span class="plugin-tag">Windsor.ai</span>
+          <span class="plugin-tag">Google Apps Script</span>
+          <span class="plugin-tag">Claude Cowork</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EDIT: For who section — heading and checklist items
+     Add or remove <li> items as needed
+     ============================================================ -->
+<div class="for-who">
+  <div class="for-who-inner">
+    <p class="section-label">This is for you if</p>
+    <h2>You're building something real<br>and you want <em>confidence in every decision.</em></h2>
+    <ul class="checklist">
+      <li>You're a founder or solo operator running your own marketing</li>
+      <li>You don't have budget for an agency or full-time hire yet</li>
+      <li>You're running at least two channels and want to compare them properly</li>
+      <li>You want one place to review performance and plan the week ahead</li>
+      <li>You want to make smarter decisions with the budget you have</li>
+      <li>You're ready to back your instincts with actual data</li>
+    </ul>
+  </div>
+</div>
+
+
+<!-- ============================================================
+     EDIT: Pricing section — price, includes list
+     ============================================================ -->
+<section class="section section-rule" id="pricing">
+  <p class="section-label">Pricing</p>
+  <h2 class="section-heading">One-time. Yours forever.</h2>
+  <p class="section-intro">No subscription. No ongoing cost. Buy once, use it every single week.</p>
+  <div class="pricing-block">
+    <div class="price-display">
+      <!-- EDIT: Change the price number here -->
+      <div class="price-amount"><span class="price-currency">A$</span>79</div>
+      <p class="price-note">One-time purchase · Instant download · Google Sheets + Excel</p>
+    </div>
+    <div class="price-includes">
+      <h3>Includes</h3>
+      <!-- EDIT: Add or remove includes by copying/deleting an <li> line -->
+      <ul class="includes-list">
+        <li>Full multi-channel weekly report template</li>
+        <li>eComm, Paid Ads, Organic Social + eDM tracking</li>
+        <li>BROAS calculation built in</li>
+        <li>Weekly analysis prompts per channel</li>
+        <li>Next steps framework for each week</li>
+        <li>Fully customisable — edit any field or metric</li>
+        <li>Compatible with Windsor.ai, Google Apps Script + Claude Cowork</li>
+        <li>Available in Google Sheets and Excel</li>
+      </ul>
+    </div>
+  </div>
+  <div style="margin-top: 2.5rem;">
+    <!-- EDIT: Replace YOUR-GUMROAD-URL with your actual Gumroad product link -->
+    <a href="YOUR-GUMROAD-URL" class="btn-primary" style="font-size: 15px; padding: 1rem 2rem;">Get instant access →</a>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     EDIT: Footer CTA — headline, subtext
+     ============================================================ -->
+<div class="footer-cta">
+  <h2>Every channel accounted for.<br>Every week, without the guesswork.</h2>
+  <p>Built by someone who's done this for major global brands. Simplified for founders doing it themselves.</p>
+  <!-- EDIT: Replace YOUR-GUMROAD-URL with your actual Gumroad product link -->
+  <a href="YOUR-GUMROAD-URL" class="btn-light">Get the template — A$79 →</a>
+</div>
+
+
+<!-- ============================================================
+     EDIT: Footer — copyright line and contact note
+     ============================================================ -->
+<footer class="site-footer">
+  <p>© 2025 · Digital download · Delivered via Gumroad</p>
+  <!-- EDIT: Replace with your actual TikTok handle -->
+  <p>Questions? Find us on TikTok @YOURTIKTOKHANDLE</p>
+</footer>
+
+</body>
+</html>
